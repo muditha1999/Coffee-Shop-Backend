@@ -1,15 +1,13 @@
 package com.example.demo.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="Customer")
 public class User {
     @Id
     @Column(name="user_id",length = 10)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int user_id;
 
     @Column(name="user_name",nullable = false,length = 100)
@@ -73,5 +71,11 @@ public class User {
                 ", password='" + password + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public User(String user_name, String email, String password) {
+        this.user_name = user_name;
+        this.email = email;
+        this.password = password;
     }
 }
